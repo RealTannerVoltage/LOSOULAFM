@@ -14,17 +14,13 @@ function panic (message: string) {
     scene.setBackgroundColor(0)
     spriteutils.setConsoleOverlay(true)
     console.log("An error has occurred.")
-    console.log(createBorderString(message.length))
+    console.log(createBorderString())
     console.log(message)
-    console.log(createBorderString(message.length))
+    console.log(createBorderString())
     pauseUntil(() => false)
 }
 function MyBootMan () {
-    class bootOption {
-        name: string
-        executable: Function
-    }
-usernames = ["root"]
+    usernames = ["root"]
     currentUsername = usernames[currentUser]
     bootMenu = miniMenu.createMenu(
     miniMenu.createMenuItem("SDA1: \"LOSOULAFM\""),
@@ -46,7 +42,7 @@ usernames = ["root"]
     	
     })
 }
-function createBorderString (length: number) {
+function createBorderString () {
     return "-------------------------"
 }
 let bootMenu: Sprite = null
@@ -54,6 +50,10 @@ let currentUser = 0
 let currentUsername = ""
 let usernames: string[] = []
 let bootOptions: number[] = []
+class bootOption {
+        name: string
+        executable: Function
+    }
 MyBootMan()
 game.onUpdate(function () {
     currentUsername = usernames[currentUser]
